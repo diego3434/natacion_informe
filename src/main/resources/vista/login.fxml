@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Ventana de Login -->
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controlador.LoginController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-background-color: #1a2a4a; -fx-padding: 50;">
+
+    <Label text="SISTEMA DE NATACIÓN"
+           style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <Label text="Escuela Politécnica Nacional – ESFOT"
+           style="-fx-text-fill: #aaaacc; -fx-font-size: 13px;"/>
+
+    <VBox spacing="10" maxWidth="320"
+          style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 8;">
+
+        <Label text="Usuario"/>
+        <TextField fx:id="txtUsuario" promptText="Ingresa tu usuario"/>
+
+        <Label text="Contraseña"/>
+        <PasswordField fx:id="txtClave" promptText="Ingresa tu contraseña"/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding><Insets top="10"/></padding>
+            <Button text="Salir"    onAction="#onSalir"
+                    style="-fx-background-color: #cccccc;"/>
+            <Button text="Ingresar" onAction="#onIngresar"
+                    style="-fx-background-color: #1a6fc4; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+</VBox>

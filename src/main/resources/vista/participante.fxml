@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Ventana CRUD de Participantes -->
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controlador.ParticipanteController"
+            style="-fx-background-color: #f0f4f8;">
+
+    <!-- ===== CABECERA ===== -->
+    <top>
+        <Label text="Registro de Participantes – Natación"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;
+                      -fx-background-color: #1a2a4a; -fx-text-fill: white;
+                      -fx-padding: 14 20; -fx-max-width: Infinity;"/>
+    </top>
+
+    <!-- ===== FORMULARIO (izquierda) ===== -->
+    <left>
+        <VBox spacing="8" style="-fx-padding: 16; -fx-background-color: white;
+                                  -fx-border-color: #dde; -fx-border-width: 0 1 0 0;"
+              prefWidth="320">
+
+            <Label text="DATOS DEL PARTICIPANTE"
+                   style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #1a2a4a;"/>
+
+            <!-- Cédula -->
+            <Label text="Cédula *"/>
+            <TextField fx:id="txtCedula" promptText="Ej: 1712345678"/>
+
+            <!-- Nombre -->
+            <Label text="Nombre *"/>
+            <TextField fx:id="txtNombre" promptText="Nombre"/>
+
+            <!-- Apellido -->
+            <Label text="Apellido *"/>
+            <TextField fx:id="txtApellido" promptText="Apellido"/>
+
+            <!-- Edad -->
+            <Label text="Edad *"/>
+            <TextField fx:id="txtEdad" promptText="Ej: 20"/>
+
+            <!-- Correo -->
+            <Label text="Correo electrónico *"/>
+            <TextField fx:id="txtCorreo" promptText="ejemplo@email.com"/>
+
+            <!-- Estado Civil -->
+            <Label text="Estado Civil *"/>
+            <ComboBox fx:id="cmbEstadoCivil" maxWidth="Infinity"
+                      promptText="-- Selecciona --"/>
+
+            <!-- Jornada -->
+            <Label text="Jornada *"/>
+            <fx:define>
+                <ToggleGroup fx:id="tgJornada"/>
+            </fx:define>
+            <HBox spacing="10">
+                <RadioButton fx:id="rbMatutina"   text="Matutina"
+                             toggleGroup="$tgJornada"/>
+                <RadioButton fx:id="rbVespertina" text="Vespertina"
+                             toggleGroup="$tgJornada"/>
+                <RadioButton fx:id="rbNocturna"   text="Nocturna"
+                             toggleGroup="$tgJornada"/>
+            </HBox>
+
+
+
+            <!-- Categoría -->
+            <Label text="Categoría *"/>
+            <ComboBox fx:id="cmbCategoria" maxWidth="Infinity"
+                      promptText="-- Selecciona --"/>
+
+            <!-- Observaciones -->
+            <Label text="Observaciones"/>
+            <TextArea fx:id="txtObservaciones" prefRowCount="3"
+                      promptText="Notas adicionales (opcional)"/>
+
+            <!-- Botones -->
+            <HBox spacing="8" alignment="CENTER">
+                <padding><Insets top="8"/></padding>
+                <Button text="💾 Guardar"    onAction="#onGuardar"
+                        prefWidth="85"
+                        style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+                <Button text="✏ Actualizar" onAction="#onActualizar"
+                        prefWidth="85"
+                        style="-fx-background-color: #007bff; -fx-text-fill: white;"/>
+                <Button text="🗑 Eliminar"  onAction="#onEliminar"
+                        prefWidth="85"
+                        style="-fx-background-color: #dc3545; -fx-text-fill: white;"/>
+                <Button text="✖ Limpiar"   onAction="#onLimpiar"
+                        prefWidth="85"
+                        style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+            </HBox>
+
+            <Label text="* Campos obligatorios"
+                   style="-fx-text-fill: #888; -fx-font-size: 11px;"/>
+        </VBox>
+    </left>
+
+    <!-- ===== TABLE VIEW (centro) ===== -->
+    <center>
+        <VBox style="-fx-padding: 16;" spacing="8">
+            <Label text="Participantes registrados"
+                   style="-fx-font-weight: bold; -fx-font-size: 13px;"/>
+
+            <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId"          text="ID"          prefWidth="45"/>
+                    <TableColumn fx:id="colCedula"      text="Cédula"      prefWidth="100"/>
+                    <TableColumn fx:id="colNombre"      text="Nombre"      prefWidth="100"/>
+                    <TableColumn fx:id="colApellido"    text="Apellido"    prefWidth="100"/>
+                    <TableColumn fx:id="colEdad"        text="Edad"        prefWidth="50"/>
+                    <TableColumn fx:id="colCorreo"      text="Correo"      prefWidth="170"/>
+                    <TableColumn fx:id="colEstadoCivil" text="Estado Civil" prefWidth="100"/>
+                    <TableColumn fx:id="colJornada"     text="Jornada"     prefWidth="90"/>
+                    <TableColumn fx:id="colCategoria"   text="Categoría"   prefWidth="90"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay participantes registrados."/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
